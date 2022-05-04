@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define RADIUS 1
-#define N 1000
+#define N 10000
 
 
 // 子執行緒函數
