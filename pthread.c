@@ -36,7 +36,7 @@ int main() {
   int sum = 0;
   double min = 0.0;
   double max = 2*RADIUS;
-  
+
 
   int i;
   for(i = 0 ; i < N ; i++){
