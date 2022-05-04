@@ -40,14 +40,14 @@ int main() {
 
   int i;
   for(i = 0 ; i < N ; i++){
-    double x = (max) * rand() / (RAND_MAX + 1.0);
-    double y = (max) * rand() / (RAND_MAX + 1.0);
+    double x = rand() / (RAND_MAX);
+    double y = rand() / (RAND_MAX);
     if(x * x + y * y < RADIUS){
       sum++;
     }
-    printf("PI = %f\n", (double) 4 * sum / (N - 1));
   }
   
+  printf("PI = %f\n", (double) 4 * sum / (N - 1));
 
   return 0;
 }
