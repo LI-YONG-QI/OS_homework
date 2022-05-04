@@ -6,11 +6,16 @@
 #include <math.h>
 
 #define RADIUS 1
+#define N 1000
 
 
 // 子執行緒函數
 // void *runner (){
 //   srand()
+// }
+
+// double calculateDistance(double x, double y){
+  
 // }
 
 // 主程式
@@ -27,11 +32,22 @@ int main() {
   // pthread_join(t, NULL); // 等待子執行緒執行完成
 
   srand(time(NULL));
+
+  int sum = 0;
   double min = 0.0;
   double max = 2*RADIUS;
-  double x = (max) * rand() / (RAND_MAX + 1.0);
-  double y = (max) * rand() / (RAND_MAX + 1.0);
-  printf("%f, %f", x, y);
+  
+
+  int i;
+  for(i = 0 ; i < N ; i++){
+    double x = (max) * rand() / (RAND_MAX + 1.0);
+    double y = (max) * rand() / (RAND_MAX + 1.0);
+    if(x * x + y * y < RADIUS){
+      sum++;
+    }
+    printf("PI = %f\n", (double) 4 * sum / (N - 1));
+  }
+  
 
   return 0;
 }
