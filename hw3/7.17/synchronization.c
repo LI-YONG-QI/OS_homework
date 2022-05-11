@@ -15,13 +15,14 @@ int northCount;
 int southCount;
 
 double min = 0;
-double max = 30;
+double max = 15;
 
 void *northRunner(int* index){
-  srand(time(NULL));
-  double time = (max - min) * rand() / (RAND_MAX + 1.0) + min;
-  sleep(time);
-  printf("[%d] North bound farmar want to across the bridge...\n",*index);
+  
+  double t = (max - min) * rand() / (RAND_MAX + 1.0) + min;
+  
+  // sleep(t);
+  printf("[%d] North bound farmar want to across the bridge\n",*index);
 
   pthread_mutex_lock(&northPublicMutex);
   pthread_mutex_unlock(&northPublicMutex);
@@ -35,7 +36,7 @@ void *northRunner(int* index){
 
   //perform
   printf("[%d] North bound farmar is walking bridge\n", *index);
-  sleep(time);
+  sleep(t);
   printf("[%d] North bound farmar is leaving bridge\n", *index);
 
   pthread_mutex_lock(&northSelfMutex);
@@ -50,10 +51,10 @@ void *northRunner(int* index){
 }
 
 void *southRunner(int* index){
-  srand(time(NULL));
-  double time = (max - min) * rand() / (RAND_MAX + 1.0) + min;
-  sleep(time);
-  printf("[%d] South bound farmar want to across the bridge...\n",*index);
+  
+  double t = (max - min) * rand() / (RAND_MAX + 1.0) + min;
+  //sleep(t);
+  printf("[%d] South bound farmar want to across the bridge\n",*index);
 
   pthread_mutex_lock(&southPublicMutex);
   pthread_mutex_unlock(&southPublicMutex);
@@ -67,11 +68,8 @@ void *southRunner(int* index){
 
   //perform
   printf("[%d] South bound farmar is walking bridge\n", *index);
-  sleep(time);
+  sleep(t);
   printf("[%d] South bound farmar is leaving bridge\n", *index);
-
-  // sleep
-  sleep(time);
 
   pthread_mutex_lock(&southSelfMutex);
   southCount--;
@@ -88,6 +86,7 @@ void *southRunner(int* index){
 
 int main() 
 {
+  srand(time(NULL));
   int ids[10] = {0,1,2,3,4,5,6,7,8,9};
 
   northCount = 0;
