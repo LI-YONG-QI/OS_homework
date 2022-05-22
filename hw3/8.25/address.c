@@ -9,7 +9,5 @@ int main(int argc, char* argv[]){
     printf("The address %d contains\n", n);
     printf("page number = %d\n", pageNumber);
     printf("offset = %d\n", offset);
-    printf("Hello Vim\n");
-
     return 0;
 }

@@ -104,18 +104,16 @@ int main()
   int i;
   int x;
 
-  for(count = 0 ; count < 2 ; count++){
     //north first
-    for(i = 0 ; i < 5 ; i++){
-        pthread_create(&northBound[i], NULL, northRunner, &ids[i]);
-        pthread_create(&southBound[i], NULL, southRunner, &ids[i]);
-    }
+  for(i = 0 ; i < 5 ; i++){
+      pthread_create(&northBound[i], NULL, northRunner, &ids[i]);
+      pthread_create(&southBound[i], NULL, southRunner, &ids[i]);
+  }
 
-    //north first
-    for(x = 5 ; x < 10 ; x++){
-      pthread_create(&southBound[i], NULL, southRunner, &ids[x]);
-      pthread_create(&northBound[i], NULL, northRunner, &ids[x]); 
-    }
+  //north first
+  for(x = 5 ; x < 10 ; x++){
+    pthread_create(&southBound[i], NULL, southRunner, &ids[x]);
+    pthread_create(&northBound[i], NULL, northRunner, &ids[x]); 
   }
 
   int j;
